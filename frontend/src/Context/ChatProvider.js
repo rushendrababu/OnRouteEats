@@ -4,11 +4,12 @@ import { useHistory } from "react-router-dom";
 const ChatContext = createContext();
 
 const ChatProvider = ({ children }) => {
-  
   const [user, setUser] = useState();
   const [hotels, setHotels] = useState([]);
   const [menu, setMenu] = useState([]);
   const [selectedHotelId, setSelectedHotelId] = useState();
+  const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
 
   const history = useHistory();
 
@@ -31,6 +32,10 @@ const ChatProvider = ({ children }) => {
         setMenu,
         selectedHotelId,
         setSelectedHotelId,
+        cart,
+        setCart,
+        total,
+        setTotal
       }}
     >
       {children}
