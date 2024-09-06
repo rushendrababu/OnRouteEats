@@ -1,31 +1,31 @@
 const asyncHandler = require("express-async-handler");
 const Order = require("../models/orderModel");
 
-const sendOrder = asyncHandler(async(req, res) =>{
-    const {cart, total, busNO, hotelId, userId} = req.body;
+const postOrder = asyncHandler(async (req, res) => {
+  const { cart, price, busNo, hotelId, userId } = req.body;
 
-    if(!cart){
-        res.status(400);
-        throw new Error("Add some items to cart to place order");
-    }
+  if (!cart || cart.length === 0) {
+    res.status(400);
+    throw new Error("Add some items to cart to place order");
+  }
 
-    const order = await Order.create({
-        cart,
-        total,
-        busNo,
-        hotelId,
-        userId,
+  const order = await Order.create({
+    cart,
+    price,
+    busNo,
+    hotelId,
+    userId,
+  });
+
+  if (order) {
+    res.status(201).json({
+      _id: order._id,
+      message: "Order placed successfully",
     });
-
-    if(order){
-        res.status(201).json({
-            _id: order._id,
-        });
-    }
-    else{
-        res.status(400);
-        throw new Error("Bus not found");
-    }
+  } else {
+    res.status(400);
+    throw new Error("Error placing order");
+  }
 });
 
 const getOrder = asyncHandler(async (req,res) => {
@@ -43,4 +43,4 @@ const getOrder = asyncHandler(async (req,res) => {
     }
 })
 
-module.exports = {sendOrder, getOrder};
+module.exports = {postOrder, getOrder};

@@ -6,6 +6,7 @@ const {notFound, errorHandler} = require("./middleware/errorMiddleware");
 const userRoutes = require("./routes/userRoutes");
 const busRoutes = require("./routes/busRoutes");
 const hotelRoutes = require("./routes/hotelRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 dotenv.config();
 connectDB();
@@ -21,6 +22,7 @@ app.use(express.json()); //to accepts json
 app.use("/api/user", userRoutes);
 app.use("/api/bus", busRoutes);
 app.use("/api/hotel", hotelRoutes);
+app.use("api/order", orderRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

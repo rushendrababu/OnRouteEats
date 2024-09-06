@@ -9,7 +9,8 @@ const orderSchema = new mongoose.Schema({
   },
   cart: [
     {
-      itemId: mongoose.Schema.Types.ObjectId, // Reference to an item in the cart
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Hotel", // Reference to an item in the cart
       quantity: Number, // Quantity of the item
     },
   ],
