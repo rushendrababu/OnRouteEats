@@ -7,6 +7,8 @@ import { ChatState } from "../Context/ChatProvider";
 function ResBox() {
   const { hotels, setSelectedHotelId } = ChatState();
 
+  
+
   return (
     <Box
       d={{ base: "flex", md: "flex" }}

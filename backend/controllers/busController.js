@@ -32,7 +32,7 @@ const getHotels = asyncHandler(async (req, res) => {
 
   if (hotels) {
     res.status(200);
-    res.send(hotels._id);
+    res.send(hotels);
   } else {
     res.status(400);
     throw new Error("No hotels found");

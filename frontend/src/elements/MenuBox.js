@@ -4,10 +4,11 @@ import { ChatState } from "../Context/ChatProvider";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { VStack } from "@chakra-ui/layout";
 
 
 function MenuBox() {
-  const {selectedHotelId, menu, setMenu, setCart, total, setTotal} = ChatState();
+  const {selectedHotelId, menu, setMenu, setCart, total, setTotal, price, setPrice} = ChatState();
   const toast = useToast();
 
   const getMenu = async(selectedHotelId) => {
@@ -38,7 +39,7 @@ function MenuBox() {
       {menu ? (
         <>
           <Box w="100%" h="100%" overflowY="hidden">
-            <Stack overflowY="scroll">
+            {/* <Stack overflowY="scroll"> */}
               {menu.map((item) => (
                 <Box
                   onClick={()=>{
@@ -50,7 +51,7 @@ function MenuBox() {
                   <Text>item.itemName</Text>
                 </Box>
               ))}
-            </Stack>
+            {/* </Stack> */}
           </Box>
         </>
       ) : (

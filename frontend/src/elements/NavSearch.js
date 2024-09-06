@@ -25,7 +25,8 @@ function NavSearch() {
       // console.log(user.token);
       // console.log(busNo);
       const response = await axios.get(
-        `http://localhost:5000/api/bus/hotels?busNo=${busNo}`,
+        `http://localhost:5000/api/bus/hotels?`,
+        {busNo},
         {
           headers: {
             "Content-Type": "application/json",
